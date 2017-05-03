@@ -8,7 +8,7 @@ RUN apk add php7 php7-apcu php7-bcmath php7-bz2 php7-calendar php7-cgi php7-comm
 	php7-session php7-sockets php7-sqlite3 php7-tidy php7-wddx php7-xdebug \
 	php7-xml php7-xmlrpc php7-xsl php7-zip php7-zlib nginx
 
-RUN apk --no-cache add supervisor
+RUN apk --no-cache add supervisor && mkdir -p /var/log/supervisord
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
