@@ -1,4 +1,4 @@
-FROM paas_base
+FROM paas_ssh
 
 RUN apk add php5 php5-pgsql php5-zip php5-cgi php5-embed php5-xmlrpc php5-mysql \
 	php5-imap php5-zlib php5-calendar php5-dba php5-mysqli \
@@ -17,17 +17,15 @@ RUN apk add php5 php5-pgsql php5-zip php5-cgi php5-embed php5-xmlrpc php5-mysql 
 #	php7-session php7-sockets php7-sqlite3 php7-tidy php7-wddx php7-xdebug \
 #	php7-xml php7-xmlrpc php7-xsl php7-zip php7-zlib nginx
 
-RUN apk --no-cache add supervisor && mkdir -p /var/log/supervisord
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY fpm-pool.conf /etc/php5/php-fpm.d/custom.conf
 COPY php.ini /etc/php5/conf.d/custom.ini
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord-nginx.conf  supervisord-php5.conf  supervisord-redis.conf /etc/supervisor/conf.d/
 
 VOLUME /data/web/
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
