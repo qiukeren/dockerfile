@@ -14,7 +14,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY fpm-pool.conf /etc/php7/php-fpm.d/custom.conf
 COPY php.ini /etc/php7/conf.d/custom.ini
 
-COPY supervisord-nginx.conf  supervisord-php5.conf  supervisord-redis.conf /etc/supervisor/conf.d/
+COPY supervisord-nginx.conf  supervisord-php7.conf  supervisord-redis.conf /etc/supervisor.d/
 
 VOLUME /data/web/
 
