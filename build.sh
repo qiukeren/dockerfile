@@ -12,6 +12,9 @@ cd ..
 cd php5
 docker build --tag paas_php5 .
 cd ..
+cd java
+docker build --tag paas_jar .
+cd ..
 cd gogs
 #docker build --tag paas_gogs .
 cd ..
