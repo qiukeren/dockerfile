@@ -5,7 +5,12 @@ cd ..
 cd ssh
 docker build --tag paas_ssh .
 cd ..
-
+cd openresty
+docker build --tag paas_openresty .
+cd ..
+cd python2
+docker build --tag paas_python2 .
+cd ..
 cd php7
 docker build --tag paas_php7 .
 cd ..
