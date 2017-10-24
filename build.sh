@@ -1,3 +1,8 @@
+if [ ! -f "id.rsa.pub" ];then
+	echo "[INFO] public key does not exist, generating"
+	ssh-keygen -t rsa -P '' -f id.rsa
+fi
+cp id.rsa.pub ssh/id_rsa.paas.pub
 docker pull alpine:latest
 cd base
 docker build --tag paas_base .
