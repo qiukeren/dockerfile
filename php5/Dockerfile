@@ -1,6 +1,6 @@
 FROM paas_ssh
 
-RUN apk add php5 php5-pgsql php5-zip php5-cgi php5-embed php5-xmlrpc php5-mysql \
+RUN apk update && apk add php5 php5-pgsql php5-zip php5-cgi php5-embed php5-xmlrpc php5-mysql \
 	php5-imap php5-zlib php5-calendar php5-dba php5-mysqli \
 	php5-soap php5-shmop php5-wddx php5-cli php5-fpm php5-bz2 php5-sockets php5-pdo_mysql \
 	php5-iconv php5-ftp php5-gettext php5-mssql php5-mcrypt php5-exif \

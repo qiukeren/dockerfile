@@ -1,6 +1,6 @@
 FROM paas_ssh
 
-RUN apk add php7 php7-apcu php7-bcmath php7-bz2 php7-calendar php7-cgi php7-common \
+RUN apk update && apk add php7 php7-apcu php7-bcmath php7-bz2 php7-calendar php7-cgi php7-common \
 	php7-ctype php7-curl php7-dba php7-dom php7-exif php7-fpm php7-ftp php7-gd \
 	php7-gettext php7-gmp php7-iconv php7-imap php7-intl php7-json php7-ldap \
 	php7-mbstring php7-mcrypt php7-mysqlnd php7-opcache php7-openssl php7-pdo \
