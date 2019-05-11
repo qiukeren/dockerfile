@@ -1,4 +1,4 @@
-FROM paas_ssh
+FROM paas_base
 
 ADD pip.conf /root/.pip/pip.conf
 

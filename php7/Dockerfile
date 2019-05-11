@@ -1,4 +1,4 @@
-FROM paas_ssh
+FROM paas_base
 
 RUN apk update && apk add php7 php7-apcu php7-bcmath php7-bz2 php7-calendar php7-cgi php7-common \
 	php7-ctype php7-curl php7-dba php7-dom php7-exif php7-fpm php7-ftp php7-gd \

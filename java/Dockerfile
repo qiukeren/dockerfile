@@ -1,4 +1,4 @@
-FROM paas_ssh
+FROM paas_base
 
 RUN apk add openjdk8 nginx
 
