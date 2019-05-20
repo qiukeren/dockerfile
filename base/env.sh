@@ -7,7 +7,7 @@ export HISTFILESIZE=1000000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth:erasedups
 
-export PROMPT_COMMAND="history -a; history 1|logger -i -t '`who -u am i|awk '{print $1 $NF}'`'; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history 1|logger -i -t '`whoami`'; $PROMPT_COMMAND"
 
 export LS_OPTIONS='--color=auto'
 export CLICOLOR='Yes'
