@@ -1,0 +1,33 @@
+#!/bin/bash
+JENKINS_HOME="/var/lib/jenkins"
+JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true"
+JENKINS_PORT="8080"
+JENKINS_DEBUG_LEVEL="5"
+JENKINS_ENABLE_ACCESS_LOG="no"
+JENKINS_HANDLER_MAX="100"
+JENKINS_HANDLER_IDLE="20"
+JENKINS_ARGS=""
+JENKINS_USER=jenkins
+JENKINS_PIDFILE="/var/run/jenkins.pid"
+JENKINS_WAR="/usr/share/webapps/jenkins/jenkins.war"
+
+JAVA_HOME="/usr/lib/jvm/default-jvm"
+COMMAND=$JAVA_HOME/bin/java
+
+JAVA_PARAMS="$JENKINS_JAVA_OPTIONS -DJENKINS_HOME=$JENKINS_HOME -jar $JENKINS_WAR"
+
+# Don't use --daemon here, because in this case stop will not work
+PARAMS="--logfile=/var/log/jenkins/jenkins.log"
+[ -n "$JENKINS_PORT" ] && PARAMS="$PARAMS --httpPort=$JENKINS_PORT"
+[ -n "$JENKINS_DEBUG_LEVEL" ] && PARAMS="$PARAMS --debug=$JENKINS_DEBUG_LEVEL"
+[ -n "$JENKINS_HANDLER_STARTUP" ] && PARAMS="$PARAMS --handlerCountStartup=$JENKINS_HANDLER_STARTUP"
+[ -n "$JENKINS_HANDLER_MAX" ] && PARAMS="$PARAMS --handlerCountMax=$JENKINS_HANDLER_MAX"
+[ -n "$JENKINS_HANDLER_IDLE" ] && PARAMS="$PARAMS --handlerCountMaxIdle=$JENKINS_HANDLER_IDLE"
+[ -n "$JENKINS_ARGS" ] && PARAMS="$PARAMS $JENKINS_ARGS"
+
+if [ "$JENKINS_ENABLE_ACCESS_LOG" = "yes" ]; then
+    PARAMS="$PARAMS --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger --simpleAccessLogger.format=combined
+--simpleAccessLogger.file=/var/log/jenkins/access_log"
+fi
+
+${COMMAND} $JAVA_PARAMS $PARAMS

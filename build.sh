@@ -17,4 +17,7 @@ cd ..
 cd java
 docker build --tag paas_jar .
 cd ..
+cd jenkins
+docker build --tag paas_jenkins .
+cd ..
 docker rmi -f `docker images |grep "<none>"|awk '{print $3}'`
