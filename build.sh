@@ -11,6 +11,9 @@ cd ..
 cd python2
 docker build --tag paas_python2 .
 cd ..
+cd python
+docker build --tag paas_python .
+cd ..
 cd php7
 docker build --tag paas_php7 .
 cd ..
