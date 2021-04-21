@@ -14,7 +14,7 @@ RUN apk update && apk upgrade &&\
     apk add curl wget htop iftop nano bash file openssh ncurses \
         tzdata openrc syslog-ng dcron openssh-server-pam s6 nano \
         gzip bzip2 util-linux busybox-extras sysstat screen tree \
-        coreutils binutils diffutils lsof
+        coreutils binutils diffutils lsof mariadb-client
 
 # allow root login
 RUN sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin prohibit-password/g" /etc/ssh/sshd_config
